@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" [routerLink]="['/home']">Book Shop</a>
+    <a class="navbar-brand" [routerLink]="['/home']" *ngIf="rol === 'Admin' ">Book Shop</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,9 +9,9 @@
           <a class="nav-link" [routerLink]="['/home']">Home</a>
         </li>
       </ul>
-      <span class="navbar-text">
-        <i class="fas fa-shopping-cart fa-2x" [routerLink]="['/cart']"></i>
+      <span class="navbar-text col-md-11 mt-2 d-flex justify-content-end "  >
+        <i class="fa fa-cart-arrow-down fa-2x "  [routerLink]="['/cart']" *ngIf="rol === 'Admin' " style="margin-right:15px;"></i>
+        <i  class="fa fa-times fa-2x" (click)="onClose()"></i>
       </span>
     </div>
   </nav>
-  

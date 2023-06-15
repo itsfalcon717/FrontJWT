@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
@@ -8,13 +8,13 @@ import swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = "";
+  name: string = "";
   password: string = "";
-  constructor(public userService: UserService,private router: Router) {}
+  constructor(public _authService: AuthService,private router: Router) {}
 
   login() {
-    const user = { email: this.email, password: this.password};
-    this.userService.login(user).subscribe((data) => {
+    const user = { name: this.name, password: this.password};
+    this._authService.login(user).subscribe((data) => {
       console.log(data);
       if(data[0].status ===200){
         this.router.navigate(['/home']);
@@ -30,7 +30,7 @@ export class LoginComponent {
         });
         Toast.fire({
           icon: 'success',
-          title: 'Bienvenido ' + data[0].usuario
+          title: 'Bienvenido ' + user.name
         });
       }else{
         const Toast = swal.mixin({

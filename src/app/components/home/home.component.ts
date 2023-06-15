@@ -23,8 +23,9 @@ export class HomeComponent {
   }
 
   public getBooks(): void {
-    this.bookService.getBooks().pipe(take(1)).subscribe((resp: Book[]) => {
+    this.bookService.getBooks().pipe(take(1)).subscribe((resp:any) => {
       this.listBook = resp;
+      // localStorage.setItem('listCartBook',JSON.stringify(resp));
     });
   }
 }

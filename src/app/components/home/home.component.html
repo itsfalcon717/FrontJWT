@@ -1,3 +1,4 @@
+<app-nav></app-nav>
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
     <div *ngFor="let book of listBook" class="col mb-4" >
@@ -14,7 +15,7 @@
             <span>{{book.price}}€</span>
           </div>
           <div class="alignCenter divAddCart" (click)="bookService.addBookToCart(book)">
-              <i class="fas fa-cart-plus addCart"></i>
+              <i class="fa fa-cart-plus addCart"></i>
           </div>
         </div>
       </div>

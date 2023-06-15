@@ -19,11 +19,12 @@ export class BookService {
   }
 
   public getBooksFromCart(): Book[] {
-    let listBook:any = JSON.stringify(localStorage.getItem('listCartBook'));
+    let listBook: any = localStorage.getItem('listCartBook');
     if (listBook === null) {
       listBook = [];
     }
-    return [];
+    
+    return JSON.parse(listBook);
   }
 
   public removeBooksFromCart(): void {
@@ -31,8 +32,9 @@ export class BookService {
   }
 
   public addBookToCart(book: Book) {
-    let listBook:any = JSON.stringify(localStorage.getItem('listCartBook'));
-    if (listBook === null) { // Create a list with the book
+    let transformar:any =localStorage.getItem('listCartBook');
+    let listBook: any = transformar ===''?undefined:JSON.parse(transformar);
+    if (listBook ===  null ||  listBook === undefined) { // Create a list with the book
       book.amount = 1;
       listBook = [ book ];
     } else { 

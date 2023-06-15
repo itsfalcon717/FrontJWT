@@ -1,20 +1,24 @@
 
+<app-nav></app-nav>
 
 <ng-container *ngIf="listCartBook && listCartBook.length > 0">
     <h5 style="margin-bottom: 1rem;">Books added to cart</h5>
   
-    <div *ngFor="let book of listCartBook" style="padding-left: 1.5rem;" class="form-group row" >
-      <label [for]="book.id" class="col-form-label col-4" style="margin-right: 1rem;">{{book.name}}</label>
-  
-      <div (click)="onInputNumberChange('minus', book)">
-        <i class="fas fa-minus iconPlusMinus"></i>
+    <div *ngFor="let book of listCartBook" class="form-group row" >
+      <div class="col-md-4">
+        <label [for]="book.id" class="col-form-label col-4" style="margin-right: 1rem;">{{book.name}}</label>
       </div>
-      <span style="margin-top: 5px; margin-left: 0.5rem; margin-right: 0.5rem;">{{book.amount}}</span>
-      <div (click)="onInputNumberChange('plus', book)">
-        <i class="fas fa-plus iconPlusMinus"></i>
-      </div>
-      <div style="margin-top: 5px; margin-left: 1rem;">
-        x {{book.price}}€ = {{Math.round((book.amount * book.price) * 100) / 100}}€
+      <div class="col-md-8 d-flex ">
+        <div (click)="onInputNumberChange('minus', book)"style="margin-top: 0px; margin-left: 0.5rem; margin-right: 0.5rem;">
+          <i class="fa fa-minus iconPlusMinus "></i>
+        </div>
+        <span >{{book.amount}}</span>
+        <div (click)="onInputNumberChange('plus', book)"  style="margin-top: 0px; margin-left: 1rem;">
+          <i class="fa fa-plus iconPlusMinus ml-2"></i>
+        </div>
+        <div style="margin-top: 5px; margin-left: 1rem;">
+          x {{book.price}}€ = {{Math.round((book.amount * book.price) * 100) / 100}}€
+        </div>
       </div>
     </div>
   
