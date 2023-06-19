@@ -18,8 +18,8 @@ export class CartComponent {
   ) { }
 
   ngOnInit(): void {
-    this.listCartBook = this._bookService.getBooksFromCart();
-    this.totalPrice = this.getTotalPrice(this.listCartBook);
+    // this.listCartBook = this._bookService.getBooksFromCart();
+    // this.totalPrice = this.getTotalPrice(this.listCartBook);
   }
 
   public getTotalPrice(listCartBook: Book[]): number {

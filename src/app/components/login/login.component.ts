@@ -12,10 +12,9 @@ export class LoginComponent {
   password: string = "";
   constructor(public _authService: AuthService,private router: Router) {}
 
-  login() {
-    const user = { name: this.name, password: this.password};
+  public login():void{
+    const user = { username: this.name, password: this.password,grant_type:'password'};
     this._authService.login(user).subscribe((data) => {
-      console.log(data);
       if(data[0].status ===200){
         this.router.navigate(['/home']);
         const Toast = swal.mixin({
@@ -30,7 +29,7 @@ export class LoginComponent {
         });
         Toast.fire({
           icon: 'success',
-          title: 'Bienvenido ' + user.name
+          title: 'Bienvenido ' 
         });
       }else{
         const Toast = swal.mixin({
